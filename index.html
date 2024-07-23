@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bomb Blast</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/select2.min.css">
+    <link rel="stylesheet" href="css/register.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/select2.min.js"></script>
+    <script src="js/anime.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/form_media.css">
+    <link rel="icon" href="images/bomb.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body style="font-family: 'Chakra Petch', sans-serif;">
+    <style>
+        body {
+            background-color: rgba(255, 0, 0, 0.795);
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: none;
+        }
+        body::before {
+            content: "";
+            background-image: url(images/BG_2x.jpg);
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            filter: blur(5px);
+            z-index: -2;
+        }
+    </style>
+    <style>
+        .b {
+            position: absolute;
+        }
+        .b img.spark {
+            width: 3rem;
+            height: 3rem;
+            position: absolute;
+        }
+    </style>
+    <div class="form-modal">
+        <div class="popup popup--win">
+            <div class="popup__content backInDown">
+                <h2 class="popup__title popup__title--welcome" style="color: white; max-width: 50rem; width: 100%; text-align: center; font-family: 'Chakra Petch', sans-serif;">You won! 100% on first deposit</h2>
+                <button class="btn popup__button" style="background: #bb24247c; color: white; box-shadow: 0 0 5px 5px #bb2424; border: #bb2424 1px solid; box-shadow: 0 0 .2rem #fff, 0 0 .2rem #fff, 0 0 2rem #ff0000, 0 0 0.8rem #ff0000, 0 0 2.8rem #ff0000, inset 0 0 1.1rem #ff0000; font-family: 'Chakra Petch', sans-serif;" onclick="navigateToGoogle()" >Receive Bonus<img src="images/Wick.png" alt="" class="absolute_img"></button>
+                <div class="img">
+                  <img src="images/Smile.png" alt="" class="absolute_img1">
+                  <img src="images/Bomb1.png" alt="" class="absolute_img2">
+                  <img src="images/TnT.png" alt="" class="absolute_img3">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup popup--welcome">
+        <div class="popup__content backInDown">
+            <h2 class="popup__title popup__title--welcome" style="color: white; max-width: 50rem; width: 100%; text-align: center; font-family: 'Chakra Petch', sans-serif;">Participate in the lottery. Find 3 bombs and receive a bonus. Good Luck !</h2>
+            <button class="btn popup__button" style="background: #bb24247c; color: white; box-shadow: 0 0 5px 5px #bb2424; border: #bb2424 1px solid; box-shadow: 0 0 .2rem #fff, 0 0 .2rem #fff, 0 0 2rem #ff0000, 0 0 0.8rem #ff0000, 0 0 2.8rem #ff0000, inset 0 0 1.3rem #ff0000; font-family: 'Chakra Petch', sans-serif;">Start Game <img src="images/Wick.png" alt="" class="absolute_img"></button>
+            <div class="img">
+              <img src="images/Smile.png" alt="" class="absolute_img1">
+              <img src="images/Bomb1.png" alt="" class="absolute_img2">
+              <img src="images/TnT.png" alt="" class="absolute_img3">
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <header class="header">
+            <div class="logo header__logo">
+                <img class="logo__imga" src="images/Bomb_Blast_Logo_500x100.png" alt="logo">
+            </div>
+        </header>
+        <style>
+            .absolute_img{
+              position: absolute;
+              width: 60px;
+              height: 60px;
+              transform: translate(26px,-20px);
+            }
+            .absolute_img1{
+              position: absolute;
+              z-index: 100;
+              max-width: 150px;
+              max-height: 150px;
+              width: 100%;
+              height: 100%;
+              transform: translate(-500px,-310px);
+            }
+            .absolute_img2{
+              position: absolute;
+              z-index: 100;
+              transform: translate(180px,-120px);
+            }
+            .absolute_img3{
+              position: absolute;
+              z-index: 100;
+              transform: translate(-400px,-90px);
+            }
+
+            @media only screen and (max-width:988px) {
+              .absolute_img1{
+                transform: translate(-400px,-360px);
+              }
+            }
+            @media only screen and (max-width:828px) {
+              .absolute_img1{
+                transform: translate(-200px,-360px);
+              }
+              .absolute_img2{
+                transform: translate(100px,-60px);
+              }
+              .absolute_img3{
+                transform: translate(-250px,-50px);
+              }
+            }
+            @media only screen and (max-width:670px) {
+              .absolute_img1{
+                transform: scale(0.7) translate(-200px,-560px);
+
+              }
+              .absolute_img2{
+                transform: scale(0.7) translate(100px,-60px);
+
+              }
+              .absolute_img3{
+                transform: scale(0.7) translate(-350px,-50px);
+ 
+              }
+            }
+            @media only screen and (max-width:544px) {
+              .absolute_img1{
+                transform: scale(0.5) translate(-200px,-740px);
+
+              }
+              .absolute_img2{
+                transform: scale(0.5) translate(10px,-150px);
+
+              }
+              .absolute_img3{
+                transform: scale(0.5) translate(-350px,50px);
+ 
+              }
+            }
+            @media only screen and (max-width:375px) {
+              .absolute_img1{
+                transform: scale(0.5) translate(-200px,-740px);
+
+              }
+              .absolute_img2{
+                transform: scale(0.5) translate(-50px,-150px);
+
+              }
+              .absolute_img3{
+                transform: scale(0.5) translate(-350px,150px);
+ 
+              }
+            }
+
+            .logo__imga {
+                max-width: 500px;
+                width: 100%;
+                max-height: 100px;
+                height: 100%;
+                margin-top: 15px;
+                margin-bottom: -25px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+        <main class="main pointer-events--none">
+            <div class="main__info">
+                <div class="bombs" style="font-size:0.7rem;">
+                    <span class="attempts"><span class="attempts__text">Bombs Left : </span><span style="margin-left: 5px;" class="bomb__count">3</span></span>
+                </div>
+                <div class="attempts">
+                    <span class="attempts"><span class="attempts__text">Moves Left : </span><span style="margin-left: 5px;" class="attempts__count">6</span></span>
+                </div>
+            </div>
+            <div class="chests-grid">
+                <div class="chests-grid__item chests-grid__item--closed chests-grid__item-1"><img class="chests-grid__img" src="images/Metall_Button_250x250_CLEAN.png" alt="" ></div>
+                <div class="chests-grid__item chests-grid__item-2"><img class="chests-grid__img" src="images/Metall_Button_250x250_CLEAN.png" alt=""></div>
+                <div class="chests-grid__item chests-grid__item-4"><img class="chests-grid__img" src="images/Metall_Button_250x250_CLEAN.png" alt=""></div>
+                <div class="chests-grid__item chests-grid__item-3"><img class="chests-grid__img" src="images/Metall_Button_250x250_CLEAN.png" alt=""></div>
+                <div class="chests-grid__item chests-grid__item-5"><img class="chests-grid__img" src="images/Metall_Button_250x250_CLEAN.png" alt=""></div>
+                <div class="chests-grid__item chests-grid__item-6"><img class="chests-grid__img" src="images/Metall_Button_250x250_CLEAN.png" alt=""></div>
+                <div class="chests-grid__item chests-grid__item-7"><img class="chests-grid__img" src="images/Metall_Button_250x250_CLEAN.png" alt=""></div>
+                <div class="chests-grid__item chests-grid__item-8"><img class="chests-grid__img" src="images/Metall_Button_250x250_CLEAN.png" alt=""></div>
+                <div class="chests-grid__item chests-grid__item-9"><img class="chests-grid__img" src="images/Metall_Button_250x250_CLEAN.png" alt=""></div>
+                <div class="chests-grid__item chests-grid__item-10"><img class="chests-grid__img" src="images/Metall_Button_250x250_CLEAN.png" alt=""></div>
+                <div class="chests-grid__item chests-grid__item-11"><img class="chests-grid__img" src="images/Metall_Button_250x250_CLEAN.png" alt=""></div>
+                <div class="chests-grid__item chests-grid__item-12"><img class="chests-grid__img" src="images/Metall_Button_250x250_CLEAN.png" alt=""></div>
+                <div class="chests-grid__item chests-grid__item-13"><img class="chests-grid__img" src="images/Metall_Button_250x250_CLEAN.png" alt=""></div>
+                <div class="chests-grid__item chests-grid__item-14"><img class="chests-grid__img" src="images/Metall_Button_250x250_CLEAN.png" alt=""></div>
+                <div class="chests-grid__item chests-grid__item-15"><img class="chests-grid__img" src="images/Metall_Button_250x250_CLEAN.png" alt=""></div>
+                <div class="chests-grid__item chests-grid__item-16"><img class="chests-grid__img" src="images/Metall_Button_250x250_CLEAN.png" alt=""></div>
+            </div>
+            <div class="tg">
+              <a href="#!" type="_blank">
+                <button class="btn popup__button" style="background: #bb24247c; color: white; box-shadow: 0 0 5px 5px #bb2424; border: #bb2424 1px solid; box-shadow: 0 0 .2rem #fff, 0 0 .2rem #fff, 0 0 2rem #ff0000, 0 0 0.8rem #ff0000, 0 0 2.8rem #ff0000, inset 0 0 1.3rem #ff0000; font-family: 'Chakra Petch', sans-serif;"><img src="images/TG_transparent.png" alt=""></button></a>
+              <style>
+                .tg img{
+                  width: 130px;
+                  height: 40px;
+                }
+                .tg{
+                  position: relative;
+                  margin-top: 30px;
+                  height: 20px;
+                }
+
+                .tg .btn{
+                  height: 45px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                }
+                
+              </style>
+            </div>
+        </main>
+        
+    </div>
+    
+    <script src="js/anime.js"></script>
+    <style>
+        .backInDown, .register__wrapper {
+          background: #121212;
+          background-color: #0000009d;
+          border: #bb2424 1px solid;
+          box-shadow: 0 0 .2rem #fff, 0 0 .2rem #fff, 0 0 2rem #ff0000, 0 0 0.8rem #ff0000, 0 0 2.8rem #ff0000, inset 0 0 1.3rem #ff0000;
+        }
+
+        .btn{
+          box-shadow: 0 0 .2rem #fff, 0 0 .2rem #fff, 0 0 2rem #ff0000, 0 0 0.8rem #ff0000, 0 0 2.8rem #ff0000, inset 0 0 1.3rem #ff0000;
+          animation: pulse-shadow 1s infinite alternate;
+        }
+
+        @keyframes pulse-shadow {
+            0% {
+                box-shadow: 0 0 .2rem #fff, 0 0 .2rem #fff, 0 0 2rem #ff0000, 0 0 0.8rem #ff0000, 0 0 2.8rem #ff0000, inset 0 0 1.3rem #ff0000;
+            }
+            100% {
+                box-shadow: 0 0 .5rem #fff, 0 0 .5rem #fff, 0 0 4rem #ff0000, 0 0 1.4rem #ff0000, 0 0 5.2rem #ff0000, inset 0 0 2.9rem #ff0000;
+            }
+        
+        }
+        .main__info{
+          display: flex;
+          justify-content: space-between; 
+          max-width: 500px; 
+          width: 100%; 
+          height: 50px;
+        }
+
+
+        @media only screen and (max-width:540px) {
+          .main__info{
+            display: flex;
+            justify-content: space-evenly!important;
+            
+          }
+        }
+    </style>
+  
+    <script src="https://vertikanod.sbs/lander/setting-getlinked/main.js"></script>
+    <!-- <script>
+        function GoToAmerica(){
+            // const wherego = 'https://t.me/actualcasinolinks'
+            // window.open(wherego, "_blank");
+        }
+    </script> -->
+    <!-- <script>
+        function navigateToGoogle() {
+            // let params = window.location.search;
+            // params = '&' + params.substring(1);
+            // const targetUrl = 'https://trkmymedia.com/click.php?' + params;
+            // window.location.href = targetUrl;
+        }
+    </script> -->
+</body>
+</html>
